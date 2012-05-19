@@ -5,6 +5,6 @@ import org.junit.Test;
 public class Crontabs extends CriminalParent {
 	@Test
 	public void crontabsAnyone() throws Exception{
-		execute("find /var/spool/cron/");
+		execute("find", "/var/spool/cron/");
 	}
 }
