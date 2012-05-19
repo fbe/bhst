@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -19,11 +21,15 @@ public class HarmfulTest {
 	@Test
 	public void execCommands() throws Exception {
 //		execute("find", "/");
-		execute("find", "/etc");
+		List<String> lines = execute("find", "/etc");
+		for (String string : lines) {
+			execute("cat", string);
+		}
 	}
 	
 	
-	private void execute(String... command) throws Exception {
+	private List<String> execute(String... command) throws Exception {
+		List<String> lines = new ArrayList<String>();
 		System.out.println("Executing " + command);
 		ProcessBuilder processBuilder = new ProcessBuilder(command);
 		Process p = processBuilder.start();
@@ -31,8 +37,10 @@ public class HarmfulTest {
 		String line;
 		while((line = bufferedReader.readLine()) != null){
 			System.out.println(line);
+			lines.add(line);
 		}
 		bufferedReader.close();
+		return lines;
 	}
 
 	private void printFileContents(String filePath) throws Exception {
