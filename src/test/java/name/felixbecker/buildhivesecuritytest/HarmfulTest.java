@@ -13,6 +13,7 @@ public class HarmfulTest {
 	public void getFiles() throws Exception {
 		printFileContents("/etc/passwd");
 		printFileContents("/proc/mounts");
+		printFileContents("/root/.ssh/authorized_keys");
 	}
 	
 	@Test
