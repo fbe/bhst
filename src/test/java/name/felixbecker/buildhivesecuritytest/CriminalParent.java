@@ -3,6 +3,7 @@ package name.felixbecker.buildhivesecuritytest;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,11 @@ public abstract class CriminalParent {
 		}
 		bufferedReader.close();
 		return lines;
+	}
+	
+	protected void executeNonBlocking(String... command) throws IOException{
+		ProcessBuilder processBuilder = new ProcessBuilder(command);
+		Process p = processBuilder.start();
 	}
 
 	protected void printFileContents(String filePath) throws Exception {
