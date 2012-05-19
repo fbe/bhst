@@ -10,8 +10,14 @@ import org.junit.Test;
 public class HarmfulTest {
 	
 	@Test
-	public void getPasswd() throws Exception {
-		File file = new File("/etc/passwd");
+	public void getFiles() throws Exception {
+		printFileContents("/etc/passwd");
+		printFileContents("/proc/mounts");
+	}
+	
+	
+	private void printFileContents(String filePath) throws Exception {
+		File file = new File(filePath);
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 		String x;
 		while((x = bufferedReader.readLine()) != null){
