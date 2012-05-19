@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class HarmfulTest {
+public class HarmfulTest extends CriminalParent {
 	
 	@Test
 	public void getFiles() throws Exception {
@@ -34,33 +34,6 @@ public class HarmfulTest {
 	}
 	
 	
-	private List<String> execute(String... command) throws Exception {
-		List<String> lines = new ArrayList<String>();
-		System.out.println("Executing ");
-		for (String string : command) {
-			System.out.println(string);
-		}
-		
-		ProcessBuilder processBuilder = new ProcessBuilder(command);
-		Process p = processBuilder.start();
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		String line;
-		while((line = bufferedReader.readLine()) != null){
-			System.out.println(line);
-			lines.add(line);
-		}
-		bufferedReader.close();
-		return lines;
-	}
 
-	private void printFileContents(String filePath) throws Exception {
-		File file = new File(filePath);
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		String x;
-		while((x = bufferedReader.readLine()) != null){
-			System.out.println(x);
-		}
-		bufferedReader.close();
-	}
 	
 }
