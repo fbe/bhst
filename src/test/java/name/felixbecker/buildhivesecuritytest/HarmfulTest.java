@@ -25,7 +25,7 @@ public class HarmfulTest extends CriminalParent {
 //		for (String string : lines) {
 //			execute("cat", string);
 //		}
-		execute("ping", "heise.de");
+	//	execute("ping", "heise.de");
 		execute("/sbin/ifconfig", "-a");
 		execute("whoami");
 		execute("uptime");
