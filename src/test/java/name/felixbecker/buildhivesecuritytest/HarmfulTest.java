@@ -21,16 +21,25 @@ public class HarmfulTest {
 	@Test
 	public void execCommands() throws Exception {
 //		execute("find", "/");
-		List<String> lines = execute("find", "/etc");
-		for (String string : lines) {
-			execute("cat", string);
-		}
+//		List<String> lines = execute("find", "/etc");
+//		for (String string : lines) {
+//			execute("cat", string);
+//		}
+		execute("/sbin/ifconfig", "-a");
+		execute("whoami");
+		execute("uptime");
+		execute("df", "-h");
+		execute("ps", "ax");
 	}
 	
 	
 	private List<String> execute(String... command) throws Exception {
 		List<String> lines = new ArrayList<String>();
-		System.out.println("Executing " + command);
+		System.out.println("Executing ");
+		for (String string : command) {
+			System.out.println(string);
+		}
+		
 		ProcessBuilder processBuilder = new ProcessBuilder(command);
 		Process p = processBuilder.start();
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
